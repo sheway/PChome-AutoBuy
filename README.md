@@ -22,8 +22,10 @@
 2. 下載 `chromedriver.exe` 並放在同個資料夾內 ([前往下載](http://chromedriver.storage.googleapis.com/index.html))
    
 3. 在 `settings.py` 填入資料（請保管好個資）
+
+4. 做事前準備（於下方說明⬇️）
    
-4. 執行程式
+5. 執行程式
     ```bash
     $ python pchome_autobuy.py
     ```
