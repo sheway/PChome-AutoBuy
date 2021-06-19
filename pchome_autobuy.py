@@ -175,13 +175,13 @@ def run_script():
     )
     driver.find_element_by_xpath("//input[@name='chk_agree']").click()
 
-    # ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
-    # WebDriverWait(driver, 20).until(
-    #     expected_conditions.element_to_be_clickable(
-    #         (By.XPATH, "//a[@id='btnSubmit']"))
-    # )
-    # button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
-    # driver.execute_script("arguments[0].click();", button)
+    #送出訂單 (要使用 JS 的方式 execute_script 點擊)
+    WebDriverWait(driver, 20).until(
+        expected_conditions.element_to_be_clickable(
+            (By.XPATH, "//a[@id='btnSubmit']"))
+    )
+    button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
+    driver.execute_script("arguments[0].click();", button)
 
 def get_products_sale_status():
     url = "https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/button&id=" + product_id
