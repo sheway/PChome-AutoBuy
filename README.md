@@ -34,7 +34,7 @@
 1. 本程式碼原作者為 [jumpingchu](https://github.com/jumpingchu/PChome-AutoBuy)，此為純作業用之修改版，並增加及改善以下功能:
     1. 改善有時無法按到購物車按鈕(改為直接前往購物車連結)
     2. 加入定時功能(到達指定時間使程式自動執行搶購)
-    3. 加入機制預防 pchome 的時差 [參考連結](https://blog.jiatool.com/posts/pchome_spider01/)
+    3. 加入機制預防 pchome 的時差 [參考資料](https://blog.jiatool.com/posts/pchome_spider01/)
 
 2. 可以先拿其他的商品連結做測試，以防搶購時的突發狀況或錯誤（但請記得馬上取消訂單！）
    
