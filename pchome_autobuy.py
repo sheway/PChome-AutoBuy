@@ -4,8 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
-from settings import product_id, CHROME_PATH, loginAcc, loginPwd, BuyerName, BuyerGender, BuyerSSN, BirthYear, BirthMonth, BirthDay, CardNum_single, multi_ThruMonth, multi_ThruYear, multi_CVV2Num, BuyerMobile, BuyerAddrCity, BuyerAddrRegion, BuyerAddr
-
+from settings import URL, CHROME_PATH, loginAcc, loginPwd, BuyerName, BuyerGender, BuyerSSN, BirthYear, BirthMonth, BirthDay, CardNum_single, multi_ThruMonth, multi_ThruYear, multi_CVV2Num, BuyerMobile, BuyerAddrCity, BuyerAddrRegion, BuyerAddr
+product_id = ''
 
 def login_acc():
     driver.get("https://ecvip.pchome.com.tw/login/v3/login.htm?")  #前往登入頁面
@@ -175,23 +175,23 @@ def run_script():
     )
     driver.find_element_by_xpath("//input[@name='chk_agree']").click()
 
-    #送出訂單 (要使用 JS 的方式 execute_script 點擊)
-    WebDriverWait(driver, 20).until(
-        expected_conditions.element_to_be_clickable(
-            (By.XPATH, "//a[@id='btnSubmit']"))
-    )
-    button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
-    driver.execute_script("arguments[0].click();", button)
+    # ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
+    # WebDriverWait(driver, 20).until(
+    #     expected_conditions.element_to_be_clickable(
+    #         (By.XPATH, "//a[@id='btnSubmit']"))
+    # )
+    # button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
+    # driver.execute_script("arguments[0].click();", button)
 
 def get_products_sale_status():
     url = "https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/button&id=" + product_id
     data = requests.get(url)
-    print(data.text)
+    # print(data.text)
     a = data.text.split(',')
     for i in range(len(a)):
         if a[i].find("ButtonType") > -1:
             num = i
-    print(a[num])
+    # print(a[num])
     cur_status = a[num].split(':')[1].find("ForSale")
     if cur_status > -1:
         return True
@@ -207,6 +207,10 @@ if __name__ == "__main__":
     driver = webdriver.Chrome(
         executable_path='chromedriver.exe', chrome_options=options)
     driver.set_page_load_timeout(120)
+    product_id = URL.split("/prod/")[1]
+    if product_id.find("?") > -1:
+        product_id = product_id.split("?")[0]
+    # print(product_id)
     url = "https://24h.pchome.com.tw/prod/" + product_id
     driver.get(url)
 
