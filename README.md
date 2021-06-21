@@ -67,7 +67,7 @@
 3. 於 `pchome_autobuy.py` 的 220 行輸入搶購時間(24時制)。
 
 ## 函式說明
-1. login_acc(): 第一次使用時，用來自動化登入 pchome24h 的 function。
+1. login_acc(): 第一次使用時，用來自動化登入 pchome24h。
 2. get_products_sale_status(): 到指定時間後，為避免電腦時間與 pchome24h 時間有時差，須等此函式確認商品是否開賣。
 3. run_script(): 確認商品開賣後，執行此 function 以開始搶購。
 
