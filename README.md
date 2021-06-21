@@ -1,8 +1,8 @@
 # PChome 24h 自動化搶購
 
-## Introduction
+## 起源
 
-* 自從開始遠距教學後，就無法止住我想組電腦的慾望，但礙於前段時間虛擬貨幣大漲，顯示卡根本一卡難求，3070ti 根本搶不到。於是就想寫個程式看能不能在 6/18 搶到顯卡，結果我在 6/16 找了很久都沒找到
+* 自從開始遠距教學後，就無法止住我想組電腦的慾望，但礙於前段時間虛擬貨幣大漲，顯示卡一卡難求，3070ti 根本搶不到。於是就想寫個程式看能不能在 6/18 搶到顯卡，結果我在 6/16 找了很久都沒找到
  PChome 要賣顯卡的消息，結果 6/17 消息才出來而我沒看到...。
 * 本程式碼原作者為 [jumpingchu](https://github.com/jumpingchu/PChome-AutoBuy)，此為純作業用之修改版，並增加及改善以下功能:
     1. 改善有時無法按到購物車按鈕(改為直接前往購物車連結)
@@ -77,5 +77,5 @@
 3. `pchome_autobuy.py` 的 206 行為不開啟實體瀏覽器背景執行，但經實測無法成功。
 
 ## 參考資料
-* https://blog.jiatool.com/posts/pchome_spider01/
-* https://github.com/jumpingchu/PChome-AutoBuy
+* [https://blog.jiatool.com/posts/pchome_spider01/](https://blog.jiatool.com/posts/pchome_spider01/)
+* [https://github.com/jumpingchu/PChome-AutoBuy](https://github.com/jumpingchu/PChome-AutoBuy)
