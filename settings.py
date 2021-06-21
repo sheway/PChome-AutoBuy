@@ -1,4 +1,4 @@
-URL = "https://24h.pchome.com.tw/prod/DAAG50-A900ADCMG?fq=/S/DAAG5L" #商品網址
+URL = "商品網址"
 CHROME_PATH=r"--user-data-dir=C:\\<chrome 設定檔路徑>"  # 可透過網址列輸入 chrome://version/ 找到
 
 # 請注意！以下皆為機密個資，請小心謹慎，勿上傳至公開平台
