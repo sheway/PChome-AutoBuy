@@ -76,7 +76,7 @@
     ```
     * 使用 .send_keys 將帳號密碼填入相對應欄位
     ```bash
-    elem.send_keys(loginAcc)
+    elem.send_keys('我的帳號')
     ```
     ![1624338072127_new](https://user-images.githubusercontent.com/67420772/122872112-8960a480-d362-11eb-8f3e-c04c6c832360.jpg)
 
