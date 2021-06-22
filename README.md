@@ -44,9 +44,9 @@
    
 3. 於 `settings.py` 事先填入各項資料。
 
-4. 請先執行 `pchome_autobuy.py` 的 218 行以登入帳戶，登入成功後可將此行註解。
+4. 請先執行 `pchome_autobuy.py` 的 217 行以登入帳戶，登入成功後可將此行註解。
 
-5. 於 `pchome_autobuy.py` 的 225 行輸入搶購時間(24時制)。
+5. 於 `pchome_autobuy.py` 的 224 行輸入搶購時間(24時制)。
    
 6. 執行程式
     ```bash
