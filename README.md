@@ -22,6 +22,15 @@
     ```bash
     $ pip install selenium
     ```
+* Requests
+  * 安裝 Python 2 的 requests 模組
+    ```bash
+    $ pip install requests
+    ```
+  * 安裝 Python 3 的 requests 模組
+    ```bash
+    $ pip3 install requests
+    ```
 
 ## 使用方法
 
@@ -34,9 +43,9 @@
    
 3. 於 `settings.py` 事先填入各項資料。
 
-4. 請先執行 `pchome_autobuy.py` 的 218 行以登入帳戶，登入成功後可將此行註解。
+4. 請先執行 `pchome_autobuy.py` 的 220 行以登入帳戶，登入成功後可將此行註解。
 
-5. 於 `pchome_autobuy.py` 的 224 行輸入搶購時間(24時制)。
+5. 於 `pchome_autobuy.py` 的 226 行輸入搶購時間(24時制)。
    
 6. 執行程式
     ```bash
@@ -56,7 +65,81 @@
 10. 點擊送出訂單
 
 ## 程式製作過程
-* 模擬從登入帳戶
+1. 模擬登入帳戶
+    * 使用 .get 將 chrome 模擬器前往 PChome 登入頁面
+    ```bash
+    driver.get("https://ecvip.pchome.com.tw/login/v3/login.htm?")
+    ```
+    * 使用 .find_element_by_id 尋找帳號密碼的欄位
+    ```bash
+    elem = driver.find_element_by_id('loginAcc')
+    ```
+    * 使用 .send_keys 將帳號密碼填入相對應欄位
+    ```bash
+    elem.send_keys(loginAcc)
+    ```
+    ![1624338072127](https://user-images.githubusercontent.com/67420772/122866098-ff144280-d359-11eb-8f63-2ed5fb9398d3.jpg)
+
+2. 等待搶購時間
+    * 使用 time.strftime('%H_%M_%S') 得到目前的時間，並使用 while 迴圈等待
+    ![1624338302735](https://user-images.githubusercontent.com/67420772/122866501-a09b9400-d35a-11eb-8404-675b6adaa1fd.jpg)
+
+3. 判斷商品是否開賣
+    * 使用 requests.get(url) 來得到商品目前資訊，並判斷 ButtonType 是否為 ForSale
+    * 未開賣:
+    ![1624338211290](https://user-images.githubusercontent.com/67420772/122866331-59150800-d35a-11eb-994b-b54b84ef3e24.jpg)
+    * 已開賣:
+    ![1624338197650](https://user-images.githubusercontent.com/67420772/122866324-561a1780-d35a-11eb-8f78-9a22b9594c95.jpg)
+
+4. 將商品加入購物車
+    * 使用 .get 將 chrome 模擬器前往商品頁面
+    ```bash
+    driver.get("你的商品連結")
+    ```
+    * 使用 WebDriverWait 等待指定容器加載好
+    ```bash
+    WebDriverWait(driver, 20).until(
+        expected_conditions.element_to_be_clickable(
+            (By.XPATH, "//li[@id='ButtonContainer']/button")) #ButtonContainer為 PChome 定義的變數名稱
+    )
+    ```
+    * 使用 .find_element_by_xpath 尋找加入購物車按鈕並利用 .click() 來模擬按下加入按鈕
+    ```bash
+    driver.find_element_by_xpath("//li[@id='ButtonContainer']/button").click()
+    ``` 
+    ![1624338566818](https://user-images.githubusercontent.com/67420772/122867931-da6d9a00-d35c-11eb-9592-abc7547b5790.jpg)
+
+5. 前往購物車
+    * 使用 .get 將 chrome 模擬器前往購物車葉面
+    ```bash
+    driver.get("購物車頁面連結")
+    ```
+    ![1624338611067](https://user-images.githubusercontent.com/67420772/122867960-e3f70200-d35c-11eb-874f-89a0e6974cb3.jpg)
+
+6. 點選一次付清
+    * 使用 WebDriverWait 等待存有'一次付清'容器加載好
+    ```bash
+    WebDriverWait(driver, 20).until(
+        expected_conditions.element_to_be_clickable(
+            (By.XPATH, "//li[@id='ButtonContainer']/button")) #ButtonContainer為 PChome 定義的變數名稱
+    )
+    ```
+    ![1624338611067_new](https://user-images.githubusercontent.com/67420772/122868093-0db02900-d35d-11eb-84f8-60ad394176cc.jpg)
+
+7. 手動點擊繼續 (非必要)
+    ![1624338611067_new](https://user-images.githubusercontent.com/67420772/122868189-36382300-d35d-11eb-8e6f-6e1a274d0a13.jpg)
+
+8. 填入各項資料
+    * 重複使用 .find_element_by_id 以及 .send_keys 填入資料
+    ```bash
+    elem = driver.find_element_by_id('資料欄位')
+    elem.send_keys(資料變數名稱)
+    ```
+![1624339156506](https://user-images.githubusercontent.com/67420772/122868374-74cddd80-d35d-11eb-8870-b89419a0d27c.jpg)
+9. 勾選同意
+10. 點擊送出訂單
+
+## 執行結果
 
 
 ## 函式說明
