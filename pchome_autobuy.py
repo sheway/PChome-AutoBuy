@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from settings import URL, CHROME_PATH, loginAcc, loginPwd, BuyerName, BuyerGender, BuyerSSN, BirthYear, BirthMonth, BirthDay, CardNum_single, multi_ThruMonth, multi_ThruYear, multi_CVV2Num, BuyerMobile, BuyerAddrCity, BuyerAddrRegion, BuyerAddr
 product_id = ''
 
@@ -18,10 +19,8 @@ def login_acc():
     elem = driver.find_element_by_id('loginPwd') #尋找密碼輸入框
     elem.clear()
     elem.send_keys(loginPwd) #輸入密碼
-    WebDriverWait(driver, 20).until( #等待登入按鈕變成可按下
-        expected_conditions.element_to_be_clickable((By.ID, "btnLogin"))
-    )
-    driver.find_element_by_id('btnLogin').click() #按下登入按鈕
+    elem.send_keys(Keys.ENTER)
+    time.sleep(4)
 
 def run_script():
     print("放入購物車")
@@ -177,13 +176,13 @@ def run_script():
     )
     driver.find_element_by_xpath("//input[@name='chk_agree']").click()
 
-    ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
-    WebDriverWait(driver, 20).until(
-        expected_conditions.element_to_be_clickable(
-            (By.XPATH, "//a[@id='btnSubmit']"))
-    )
-    button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
-    driver.execute_script("arguments[0].click();", button)
+    # ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
+    # WebDriverWait(driver, 20).until(
+    #     expected_conditions.element_to_be_clickable(
+    #         (By.XPATH, "//a[@id='btnSubmit']"))
+    # )
+    # button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
+    # driver.execute_script("arguments[0].click();", button)
 
 def get_products_sale_status():
     url = "https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/button&id=" + product_id
@@ -214,16 +213,17 @@ if __name__ == "__main__":
         product_id = product_id.split("?")[0]
     # print(product_id)
     url = "https://24h.pchome.com.tw/prod/" + product_id
-    driver.get(url)
+    # driver.get(url)
 
     #登入帳戶
     login_acc()
 
+    driver.get(url)
     flag = True
     number = 0
     while flag:
         curr_time = time.strftime('%H_%M_%S')
-        if curr_time == '00_00_00':  # 請輸入開始搶購的時間(24時制)
+        if curr_time == '13_32_00':  # 請輸入開始搶購的時間(24時制)
             while not get_products_sale_status():  # 預防pchome的時差
                 # print(number)
                 number += 1
