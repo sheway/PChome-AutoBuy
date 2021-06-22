@@ -7,8 +7,9 @@
 * 本程式碼原作者為 [jumpingchu](https://github.com/jumpingchu/PChome-AutoBuy)，此為純作業用之修改版，並增加及改善以下功能:
     1. 改善有時無法按到購物車按鈕(改為直接前往購物車連結)
     2. 加入定時功能(到達指定時間使程式自動執行搶購)
-    3. 加入機制預防 pchome 的時差 [參考資料](https://blog.jiatool.com/posts/pchome_spider01/)
-    4. 將程式碼函式化，並改動部分執行流程，降低搶購所需時間
+    3. 加入機制預防 PChome 的時差 [參考資料](https://blog.jiatool.com/posts/pchome_spider01/)
+    4. 將程式碼函式化，並修改部分執行流程，降低搶購所需時間
+    5. 將結帳畫面的資料填入功能完善
 * 本程式利用 Selenium API 來抓取網頁資料，並利用 .click() 函式來模擬滑鼠點擊，以模擬從點開商品頁面到下單之間的所有動作。
 
 ## 功能
@@ -141,6 +142,19 @@
 
 ## 執行結果
 [前往 Youtube ](https://youtu.be/-x1nxdC0vX4)
+
+## Pseudocodes
+1. LoginAccount()
+2. while flag:
+       if current_time == start_buy_time:
+           while not get_products_sale_status():
+           Try:
+               Start_to_buy()
+           Exception:
+               print Exception
+       else:
+           wait 1 second
+           print current_time 
 
 ## 函式說明
 1. login_acc(): 第一次使用時，用來自動化登入 pchome24h。
