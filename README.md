@@ -111,7 +111,7 @@
     ![1624338566818](https://user-images.githubusercontent.com/67420772/122867931-da6d9a00-d35c-11eb-9592-abc7547b5790.jpg)
 
 5. 前往購物車
-    * 使用 .get 將 chrome 模擬器前往購物車葉面
+    * 使用 .get 將 chrome 模擬器前往購物車頁面
     ```bash
     driver.get("購物車頁面連結")
     ```
