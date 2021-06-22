@@ -83,7 +83,7 @@
 
 2. 等待搶購時間
     * 使用 time.strftime('%H_%M_%S') 得到目前的時間，並使用 while 迴圈等待
-    ![1624338302735](https://user-images.githubusercontent.com/67420772/122866501-a09b9400-d35a-11eb-8404-675b6adaa1fd.jpg)
+    ![1624338072127_new](https://user-images.githubusercontent.com/67420772/122895158-6cd06680-d37a-11eb-9c23-202cc95025f5.jpg)
 
 3. 判斷商品是否開賣
     * 使用 requests.get(url) 來得到商品目前資訊，並判斷 ButtonType 是否為 ForSale
