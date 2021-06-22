@@ -78,7 +78,7 @@
     ```bash
     elem.send_keys(loginAcc)
     ```
-    ![1624338072127](https://user-images.githubusercontent.com/67420772/122866098-ff144280-d359-11eb-8f63-2ed5fb9398d3.jpg)
+    ![1624338072127_new](https://user-images.githubusercontent.com/67420772/122872112-8960a480-d362-11eb-8f3e-c04c6c832360.jpg)
 
 2. 等待搶購時間
     * 使用 time.strftime('%H_%M_%S') 得到目前的時間，並使用 while 迴圈等待
