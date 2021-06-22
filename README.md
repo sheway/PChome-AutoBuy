@@ -66,7 +66,7 @@
 10. 點擊送出訂單
 
 ## 程式製作過程
-1. 模擬登入帳戶
+1. 登入帳戶
     * 使用 .get 將 chrome 模擬器前往 PChome 登入頁面
     ```bash
     driver.get("https://ecvip.pchome.com.tw/login/v3/login.htm?")
