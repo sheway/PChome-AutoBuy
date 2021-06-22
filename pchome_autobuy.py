@@ -176,13 +176,13 @@ def run_script():
     )
     driver.find_element_by_xpath("//input[@name='chk_agree']").click()
 
-    # ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
-    # WebDriverWait(driver, 20).until(
-    #     expected_conditions.element_to_be_clickable(
-    #         (By.XPATH, "//a[@id='btnSubmit']"))
-    # )
-    # button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
-    # driver.execute_script("arguments[0].click();", button)
+    ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
+    WebDriverWait(driver, 20).until(
+        expected_conditions.element_to_be_clickable(
+            (By.XPATH, "//a[@id='btnSubmit']"))
+    )
+    button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
+    driver.execute_script("arguments[0].click();", button)
 
 def get_products_sale_status():
     url = "https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/button&id=" + product_id
@@ -213,7 +213,6 @@ if __name__ == "__main__":
         product_id = product_id.split("?")[0]
     # print(product_id)
     url = "https://24h.pchome.com.tw/prod/" + product_id
-    # driver.get(url)
 
     #登入帳戶
     login_acc()
@@ -223,7 +222,7 @@ if __name__ == "__main__":
     number = 0
     while flag:
         curr_time = time.strftime('%H_%M_%S')
-        if curr_time == '13_32_00':  # 請輸入開始搶購的時間(24時制)
+        if curr_time == '00_00_00':  # 請輸入開始搶購的時間(24時制)
             while not get_products_sale_status():  # 預防pchome的時差
                 # print(number)
                 number += 1
