@@ -167,3 +167,5 @@
 ## 參考資料
 * [https://blog.jiatool.com/posts/pchome_spider01/](https://blog.jiatool.com/posts/pchome_spider01/)
 * [https://github.com/jumpingchu/PChome-AutoBuy](https://github.com/jumpingchu/PChome-AutoBuy)
+* [https://www.itread01.com/content/1496631486.html](https://www.itread01.com/content/1496631486.html)
+* [http://lms.tzuchi.com.tw/epaper/artical/index.php?id=file/48/digiinfo_3](http://lms.tzuchi.com.tw/epaper/artical/index.php?id=file/48/digiinfo_3)
