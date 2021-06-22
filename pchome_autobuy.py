@@ -176,28 +176,27 @@ def run_script():
     )
     driver.find_element_by_xpath("//input[@name='chk_agree']").click()
 
-    ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
-    WebDriverWait(driver, 20).until(
-        expected_conditions.element_to_be_clickable(
-            (By.XPATH, "//a[@id='btnSubmit']"))
-    )
-    button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
-    driver.execute_script("arguments[0].click();", button)
+    # ### 送出訂單 ### (要使用 JS 的方式 execute_script 點擊)
+    # WebDriverWait(driver, 20).until(
+    #     expected_conditions.element_to_be_clickable(
+    #         (By.XPATH, "//a[@id='btnSubmit']"))
+    # )
+    # button = driver.find_element_by_xpath("//a[@id='btnSubmit']")
+    # driver.execute_script("arguments[0].click();", button)
 
-def get_products_sale_status():
+def get_products_sale_status(): #利用 requests 來跟 server 索要商品資訊
     url = "https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/button&id=" + product_id
     data = requests.get(url)
-    # print(data.text)
+    print(data.text)
     a = data.text.split(',')
     for i in range(len(a)):
         if a[i].find("ButtonType") > -1:
             num = i
     # print(a[num])
-    cur_status = a[num].split(':')[1].find("ForSale")
+    cur_status = a[num].split(':')[1].find("ForSale") #若 'ButtonType' 為 'ForSale' 代表商品開賣了
     if cur_status > -1:
         return True
     else:
-        print("False")
         return False
 
 
@@ -222,7 +221,7 @@ if __name__ == "__main__":
     number = 0
     while flag:
         curr_time = time.strftime('%H_%M_%S')
-        if curr_time == '00_00_00':  # 請輸入開始搶購的時間(24時制)
+        if curr_time == '14_14_50':  # 請輸入開始搶購的時間(24時制)
             while not get_products_sale_status():  # 預防pchome的時差
                 # print(number)
                 number += 1
