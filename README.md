@@ -32,9 +32,13 @@
 
 2. 下載 `chromedriver.exe` 並放在同個資料夾內 ([前往下載](http://chromedriver.storage.googleapis.com/index.html))
    
-3. 做事前準備（於下方說明⬇️）
+3. 於 `settings.py` 事先填入各項資料。
+
+4. 請先執行 `pchome_autobuy.py` 的 218 行以登入帳戶，登入成功後可將此行註解。
+
+5. 於 `pchome_autobuy.py` 的 224 行輸入搶購時間(24時制)。
    
-4. 執行程式
+6. 執行程式
     ```bash
     $ python pchome_autobuy.py
     ```
@@ -51,13 +55,14 @@
 9. 勾選同意
 10. 點擊送出訂單
 
-## 程式事前準備工作(第一次使用)
-1. 於 `settings.py` 事先填入各項資料。
-2. 請先執行 `pchome_autobuy.py` 的 218 行以登入帳戶，登入成功後可將此行註解。
-3. 於 `pchome_autobuy.py` 的 224 行輸入搶購時間(24時制)。
-
 ## 程式製作過程
 * 模擬從登入帳戶
+
+
+## 函式說明
+1. login_acc(): 第一次使用時，用來自動化登入 pchome24h。
+2. get_products_sale_status(): 到指定時間後，為避免電腦時間與 pchome24h 時間有時差，須等此函式確認商品是否開賣。
+3. run_script(): 確認商品開賣後，執行此 function 以開始搶購。
 
 ## 注意事項
 1. 本程式碼原作者為 [jumpingchu](https://github.com/jumpingchu/PChome-AutoBuy)，已經與原創作者取得授權作為純作業用。
@@ -70,15 +75,11 @@
 
 5. 本程式碼單純是提供搶購足夠數量的商品為主，**禁止用於大量收購並哄抬價格的黃牛行為！**。
 
-## 函式說明
-1. login_acc(): 第一次使用時，用來自動化登入 pchome24h。
-2. get_products_sale_status(): 到指定時間後，為避免電腦時間與 pchome24h 時間有時差，須等此函式確認商品是否開賣。
-3. run_script(): 確認商品開賣後，執行此 function 以開始搶購。
-
 ## 待辦事項
 1. 本程式碼 **尚未適用** 於數量多於１或必須選擇顏色或樣式的商品。
 2. 預防 pchome 時差機制 (get_products_sale_status) 在執行 7\~9 次後就會被伺服器擋住，目前尚無有效方法解決，但通常 2\~3 次後就會開始搶。
 3. `pchome_autobuy.py` 的 206 行為不開啟實體瀏覽器背景執行，但經實測無法成功。
+4. 想加入 Line Bot 來定時幫我開搶
 
 ## 參考資料
 * [https://blog.jiatool.com/posts/pchome_spider01/](https://blog.jiatool.com/posts/pchome_spider01/)
