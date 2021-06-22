@@ -140,7 +140,7 @@
 10. 點擊送出訂單
 
 ## 執行結果
-
+[前往 Youtube ](https://youtu.be/-x1nxdC0vX4)
 
 ## 函式說明
 1. login_acc(): 第一次使用時，用來自動化登入 pchome24h。
