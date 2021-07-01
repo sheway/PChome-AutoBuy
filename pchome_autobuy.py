@@ -185,8 +185,8 @@ def run_script():
     # driver.execute_script("arguments[0].click();", button)
 
 def get_products_sale_status(): #利用 requests 來跟 server 索要商品資訊
-    url = "https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/button&id=" + product_id
-    data = requests.get(url)
+    url_get = "https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/button&id=" + product_id
+    data = requests.get(url_get)
     print(data.text)
     a = data.text.split(',')
     for i in range(len(a)):
@@ -195,6 +195,7 @@ def get_products_sale_status(): #利用 requests 來跟 server 索要商品資�
     # print(a[num])
     cur_status = a[num].split(':')[1].find("ForSale") #若 'ButtonType' 為 'ForSale' 代表商品開賣了
     if cur_status > -1:
+        driver.get(url)
         return True
     else:
         return False
