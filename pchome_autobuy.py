@@ -222,7 +222,7 @@ if __name__ == "__main__":
     number = 0
     while flag:
         curr_time = time.strftime('%H_%M_%S')
-        if curr_time == '14_14_50':  # 請輸入開始搶購的時間(24時制)
+        if curr_time == '00_00_00':  # 請輸入開始搶購的時間(24時制)
             while not get_products_sale_status():  # 預防pchome的時差
                 # print(number)
                 number += 1
